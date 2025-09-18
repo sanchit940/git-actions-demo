@@ -8,11 +8,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       
-      - name: message
-        run: echo "Hello there"
+      - name: mutliple commands to run
+        run: |
+          echo "Hello there"
+          ls -ar
+          cat README.md
 
-      - name: Second step
-        run: ls
-      
-      - name: third step
-        run: cat README.md
+      - name: generate ascii something 
+        run: cowsay -f dragon "Hi from dragon sanchit" >> dragon.txt
