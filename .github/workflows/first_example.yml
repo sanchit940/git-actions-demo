@@ -1,5 +1,5 @@
 name: First Workflow
-on: [push,pull,fork]
+on: push
 
 jobs:
   first_job:
