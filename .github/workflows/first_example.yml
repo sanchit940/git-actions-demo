@@ -13,6 +13,3 @@ jobs:
           echo "Hello there"
           ls -ar
           cat README.md
-
-      - name: generate ascii something 
-        run: cowsay -f dragon "Hi from dragon sanchit" >> dragon.txt
