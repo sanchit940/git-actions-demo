@@ -12,15 +12,21 @@ jobs:
       - name: execture cowsay command
         run: cowsay -f dragon "Hi from dragon sanchit" >> dragon.txt
 
-      - name: sleep for 30 sec
-        run: sleep 30
+      - name: Upload the dragon file
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-file
+          path: dragon.txt
   
   Second_job:
     runs-on: ubuntu-latest
     needs: first_job
     steps:
-      - name: sleep for 10 sec
-        run: sleep 10
+      - name: download the file
+        uses: actions/download-artifact@v4
+        with:
+          name: dragon-file
+
       - name: test file exists
         run: grep -i "dragon" dragon.txt
       
@@ -28,6 +34,11 @@ jobs:
     needs: Second_job
     runs-on: ubuntu-latest
     steps:
+      - name: download txt file
+        uses: actions/download-artifact@v4
+        with:
+          name: dragon-file
+          
       - name: read file
         run: cat dragon.txt
 
